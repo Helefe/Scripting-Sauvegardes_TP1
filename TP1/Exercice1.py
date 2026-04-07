@@ -52,9 +52,19 @@ def chiffrer_fichier(chemin_entree, chemin_sortie, cle):
     # 2. Chiffrer le contenu
     ciphertext = chiffrer_message(contenu, cle)  # ??? fonction Partie B
     # 3. Écrire le fichier chiffré en binaire
-    print(ciphertext)
+    #print(ciphertext)
     with open(chemin_sortie, 'wb') as f:  # ??? mode?
         f.write(ciphertext)
-   
+
+def dechiffrer_fichier(chemin_entree, cle):
+    contenu = lire_fichier(chemin_entree)
+    return dechiffrer_message(contenu,cle)
+
+
+
 key = Fernet.generate_key()     
 chiffrer_fichier(chemin_entree,chemin_sortie,key)
+print(lire_fichier(chemin_entree))
+print(lire_fichier(chemin_sortie))
+print(dechiffrer_fichier(chemin_sortie,key))
+
